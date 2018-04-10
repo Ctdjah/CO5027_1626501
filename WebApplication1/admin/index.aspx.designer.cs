@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplication1
+namespace WebApplication1.admin
 {
 
 
-    public partial class Default
+    public partial class index
     {
     }
 }

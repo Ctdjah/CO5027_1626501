@@ -1,0 +1,64 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="WebApplication1.Site1" %>
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>
+        <asp:ContentPlaceHolder ID="Title" runat="server">
+        </asp:ContentPlaceHolder>
+
+    </title>
+
+    <link href="~/css/StyleSheet1.css" rel="stylesheet" type="text/css"/>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body runat="server">
+    <div id="page">
+        <div id="header">
+          
+        </div>
+
+    <div id="menu">
+        <ul><li><a href="~/Default.aspx" runat="server">Home</a></li>
+            <li><a href="~/product.aspx" runat="server">Product</a></li>
+            <li><a href="~/contact.aspx" runat="server">Contact</a></li>
+            <li><a href="~/login.aspx" runat="server">Login</a></li>
+            <li><a href="~/Register.aspx" runat="server">Register</a></li>
+
+        </ul>
+        
+    </div>
+    
+        <div id="content">
+            
+              <h1>
+                <asp:ContentPlaceHolder ID="Heading1" runat="server">
+
+                </asp:ContentPlaceHolder>
+
+            </h1>
+            
+
+            <asp:ContentPlaceHolder ID="Content" runat="server">
+
+            </asp:ContentPlaceHolder>
+
+        </div>
+          
+        <div id="footer">
+
+            <asp:ContentPlaceHolder ID="Footer" runat="server">
+                <p>&copy;Copyright 2018 by Siti Khadijah Binti Haji Anuar</p>
+            </asp:ContentPlaceHolder>
+            
+
+        </div>
+    
+    </div>
+    
+</body>
+</html>

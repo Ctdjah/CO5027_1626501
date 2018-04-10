@@ -1,42 +1,34 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="WebApplication1._Default" %>
+﻿<%@ Page Title="default" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="WebApplication1.Default" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="Title" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
+    
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="Heading1" runat="server">  
+    Welcome to Levi's Strauss & Co. Jeans
+</asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="Content" runat="server">
+    <br />
+    <p>Levi's aunthentic and stylish jeans are one of the best sellers in this company.
+        <br /> Here are our brand new high quality limited-edition jeans: </p>
 
-<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <p></p>
+    <br />
+    <br />
+    <table style="width:200px">
+        <tr>
+             <td><img alt="Image not found" src="image/productimg/Blue501Straight.jpg" width="300" /><p>Levi's Blue 501 Straight Jeans</p><p>Price:$100</p></td>
+             <td><img alt="Image not found" src="image/productimg/BlueWedgieStraight.jpg" width="300"/><p>Levi's Blue Wedgie Straight Jeans</p><p>Price:$160</p></td>
+             <td><img alt="Image not found" src="image/productimg/BlueWedgieIcon.jpg" width="300"/><p>Levi's Blue Wedgie Icon Jeans</p><p>Price:$100</p></td>
+        </tr>
+        <tr>    
+             <td><img alt="Image not found" src="image/productimg/BlackWedgieSkinny.jpg" width="300"/><p>Levi's Black Wedgie Skinny Jeans</p><p>Price:$100</p></td>
+             <td><img alt="Image not found" src="image/productimg/BlueAltered501Skinny.jpg" width="300"/><p>Levi's Blue Altered 501 Skinny Jeans</p><p>Price:$130</p></td>
 
-    <div class="jumbotron">
-        <h1>ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-        <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-    </div>
-
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Getting started</h2>
-            <p>
-                ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
-            A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Get more libraries</h2>
-            <p>
-                NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Web Hosting</h2>
-            <p>
-                You can easily find a web hosting company that offers the right mix of features and price for your applications.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301950">Learn more &raquo;</a>
-            </p>
-        </div>
-    </div>
-
+        </tr>
+    </table>
+    
+</asp:Content>
+<asp:Content ID="Content5" ContentPlaceHolderID="Footer" runat="server">
+      <p>&copy;Copyright 2018 by Siti Khadijah Binti Haji Anuar</p>
 </asp:Content>
