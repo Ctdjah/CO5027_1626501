@@ -8,7 +8,7 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Content" runat="server">
         <form id="form1" runat="server">
-        <p>Fill in below</p>
+        <p>Please fill and write your message on the given text box below. </p>
 <p>&nbsp;</p>
     <asp:Label ID="Label1" runat="server" Text="Email "></asp:Label>
             <asp:TextBox ID="txtEmail" runat="server" BorderWidth="1px" OnTextChanged="txtEmail_TextChanged"></asp:TextBox>
@@ -37,7 +37,11 @@
         <br />
             <asp:Literal ID="LitResult" runat="server"></asp:Literal>
             </form>
-</asp:Content>
+    <br />
+    <br />
+    
+    </asp:Content>
+
 <asp:Content ID="Content5" ContentPlaceHolderID="Footer" runat="server">
       <p>&copy;Copyright 2018 by Siti Khadijah Binti Haji Anuar</p>
 </asp:Content>

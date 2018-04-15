@@ -47,18 +47,24 @@
 
             </asp:ContentPlaceHolder>
 
+             
+
         </div>
           
         <div id="footer">
 
             <asp:ContentPlaceHolder ID="Footer" runat="server">
-                <p>&copy;Copyright 2018 by Siti Khadijah Binti Haji Anuar</p>
+                <p><a href="http://validator.w3.org/check?uri=referer">Validate HTML</a> |
+                <a href="http://jigsaw.w3.org/css-validator/check/referer">Validate CSS</a> |
+                <a href="Admin/">Admin</a>                &copy;Copyright 2018 by 1626501/J39718</p>
             </asp:ContentPlaceHolder>
             
 
         </div>
     
     </div>
+    <asp:ContentPlaceHolder ID="GoogleMap" runat="server">
     
+    </asp:ContentPlaceHolder>
 </body>
 </html>

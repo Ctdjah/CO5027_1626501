@@ -5,10 +5,13 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Heading1" runat="server">
     Register
+    <br />
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Content" runat="server">
     <form id="form1" runat="server">
-        
+        <p>
+
+        </p>
         <asp:Label ID="Label1" runat="server" Text="Username"></asp:Label>
         
         <asp:TextBox ID="txtRegEmail" runat="server" BorderStyle="Double" BorderWidth="1px"></asp:TextBox>
@@ -18,7 +21,8 @@
 &nbsp;<asp:TextBox ID="txtRegPassword" runat="server" TextMode="Password" BorderStyle="Double" BorderWidth="1px" ></asp:TextBox>
         <br />
         <br />
-        <asp:Button ID="btnReg" runat="server" Text="Register" />
+        <asp:Button ID="Button1" runat="server" Text="Register" OnClick="Button1_Click" />
+        
         <br />
         <br />
         <asp:Literal ID="LitRegisterError" runat="server"></asp:Literal>
