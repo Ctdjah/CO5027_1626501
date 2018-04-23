@@ -1,116 +1,123 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="add.aspx.cs" Inherits="WebApplication1.admin.add" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Add.aspx.cs" Inherits="WebApplication1.admin.Add" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Title" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Heading1" runat="server">
-    Add Page
+     List Of Products
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Content" runat="server">
     <form id="form1" runat="server">
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Product ID" DataSourceID="SqlDataSource1" AllowPaging="True" AllowSorting="True">
+        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="ProductId" DataSourceID="SqlDataSource1" BackColor="#FFFFCC" BorderStyle="Ridge" BorderWidth="1px">
             <Columns>
-                <asp:BoundField DataField="Product Name" HeaderText="Product Name" SortExpression="Product Name" />
-                <asp:BoundField DataField="Product ID" HeaderText="Product ID" ReadOnly="True" SortExpression="Product ID" />
-                <asp:BoundField DataField="Product Details" HeaderText="Product Details" SortExpression="Product Details" />
-                <asp:BoundField DataField="Product Quantity" HeaderText="Product Quantity" SortExpression="Product Quantity" />
-                <asp:BoundField DataField="Product Price" HeaderText="Product Price" SortExpression="Product Price" />
+                <asp:BoundField DataField="ProductId" HeaderText="ProductId" ReadOnly="True" SortExpression="ProductId" />
+                <asp:BoundField DataField="ProductName" HeaderText="ProductName" SortExpression="ProductName" />
+                <asp:BoundField DataField="ProductDetails" HeaderText="ProductDetails" SortExpression="ProductDetails" />
+                <asp:BoundField DataField="ProductQuantity" HeaderText="ProductQuantity" SortExpression="ProductQuantity" />
+                <asp:BoundField DataField="ProductPrice" HeaderText="ProductPrice" SortExpression="ProductPrice" />
+                <asp:ButtonField ButtonType="Button" CommandName="Delete" HeaderText="Action" ShowHeader="True" Text="Delete" />
+                <asp:HyperLinkField DataNavigateUrlFields="ProductId" DataNavigateUrlFormatString="edit.aspx?Id={0}" HeaderText="Action" Text="Edit" />
+                <asp:HyperLinkField DataNavigateUrlFields="ProductId" DataNavigateUrlFormatString="UploadImage.aspx?Id{0}" HeaderText="Action" Text="Upload Image" />
             </Columns>
+            <HeaderStyle BackColor="#CC0000" ForeColor="White" />
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:db_1626501_asg_co5027ConnectionString %>" DeleteCommand="DELETE FROM [tblProducts] WHERE [Product ID] = @original_Product_ID AND (([Product Name] = @original_Product_Name) OR ([Product Name] IS NULL AND @original_Product_Name IS NULL)) AND (([Product Details] = @original_Product_Details) OR ([Product Details] IS NULL AND @original_Product_Details IS NULL)) AND (([Product Quantity] = @original_Product_Quantity) OR ([Product Quantity] IS NULL AND @original_Product_Quantity IS NULL)) AND (([Product Price] = @original_Product_Price) OR ([Product Price] IS NULL AND @original_Product_Price IS NULL))" InsertCommand="INSERT INTO [tblProducts] ([Product Name], [Product ID], [Product Details], [Product Quantity], [Product Price]) VALUES (@Product_Name, @Product_ID, @Product_Details, @Product_Quantity, @Product_Price)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [tblProducts] WHERE ([Product ID] = @Product_ID)" UpdateCommand="UPDATE [tblProducts] SET [Product Name] = @Product_Name, [Product Details] = @Product_Details, [Product Quantity] = @Product_Quantity, [Product Price] = @Product_Price WHERE [Product ID] = @original_Product_ID AND (([Product Name] = @original_Product_Name) OR ([Product Name] IS NULL AND @original_Product_Name IS NULL)) AND (([Product Details] = @original_Product_Details) OR ([Product Details] IS NULL AND @original_Product_Details IS NULL)) AND (([Product Quantity] = @original_Product_Quantity) OR ([Product Quantity] IS NULL AND @original_Product_Quantity IS NULL)) AND (([Product Price] = @original_Product_Price) OR ([Product Price] IS NULL AND @original_Product_Price IS NULL))">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:db_1626501_asg_co5027ConnectionString %>" DeleteCommand="DELETE FROM [tblProduct] WHERE [ProductId] = @original_ProductId AND (([ProductName] = @original_ProductName) OR ([ProductName] IS NULL AND @original_ProductName IS NULL)) AND (([ProductDetails] = @original_ProductDetails) OR ([ProductDetails] IS NULL AND @original_ProductDetails IS NULL)) AND (([ProductQuantity] = @original_ProductQuantity) OR ([ProductQuantity] IS NULL AND @original_ProductQuantity IS NULL)) AND (([ProductPrice] = @original_ProductPrice) OR ([ProductPrice] IS NULL AND @original_ProductPrice IS NULL))" InsertCommand="INSERT INTO [tblProduct] ([ProductId], [ProductName], [ProductDetails], [ProductQuantity], [ProductPrice]) VALUES (@ProductId, @ProductName, @ProductDetails, @ProductQuantity, @ProductPrice)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [tblProduct]" UpdateCommand="UPDATE [tblProduct] SET [ProductName] = @ProductName, [ProductDetails] = @ProductDetails, [ProductQuantity] = @ProductQuantity, [ProductPrice] = @ProductPrice WHERE [ProductId] = @original_ProductId AND (([ProductName] = @original_ProductName) OR ([ProductName] IS NULL AND @original_ProductName IS NULL)) AND (([ProductDetails] = @original_ProductDetails) OR ([ProductDetails] IS NULL AND @original_ProductDetails IS NULL)) AND (([ProductQuantity] = @original_ProductQuantity) OR ([ProductQuantity] IS NULL AND @original_ProductQuantity IS NULL)) AND (([ProductPrice] = @original_ProductPrice) OR ([ProductPrice] IS NULL AND @original_ProductPrice IS NULL))">
             <DeleteParameters>
-                <asp:Parameter Name="original_Product_ID" Type="Int32" />
-                <asp:Parameter Name="original_Product_Name" Type="String" />
-                <asp:Parameter Name="original_Product_Details" Type="String" />
-                <asp:Parameter Name="original_Product_Quantity" Type="Int32" />
-                <asp:Parameter Name="original_Product_Price" Type="Decimal" />
+                <asp:Parameter Name="original_ProductId" Type="Int32" />
+                <asp:Parameter Name="original_ProductName" Type="String" />
+                <asp:Parameter Name="original_ProductDetails" Type="String" />
+                <asp:Parameter Name="original_ProductQuantity" Type="Int32" />
+                <asp:Parameter Name="original_ProductPrice" Type="Double" />
             </DeleteParameters>
             <InsertParameters>
-                <asp:Parameter Name="Product_Name" Type="String" />
-                <asp:Parameter Name="Product_ID" Type="Int32" />
-                <asp:Parameter Name="Product_Details" Type="String" />
-                <asp:Parameter Name="Product_Quantity" Type="Int32" />
-                <asp:Parameter Name="Product_Price" Type="Decimal" />
+                <asp:Parameter Name="ProductId" Type="Int32" />
+                <asp:Parameter Name="ProductName" Type="String" />
+                <asp:Parameter Name="ProductDetails" Type="String" />
+                <asp:Parameter Name="ProductQuantity" Type="Int32" />
+                <asp:Parameter Name="ProductPrice" Type="Double" />
             </InsertParameters>
-            <SelectParameters>
-                <asp:QueryStringParameter Name="Product_ID" QueryStringField="Id" Type="Int32" />
-            </SelectParameters>
             <UpdateParameters>
-                <asp:Parameter Name="Product_Name" Type="String" />
-                <asp:Parameter Name="Product_Details" Type="String" />
-                <asp:Parameter Name="Product_Quantity" Type="Int32" />
-                <asp:Parameter Name="Product_Price" Type="Decimal" />
-                <asp:Parameter Name="original_Product_ID" Type="Int32" />
-                <asp:Parameter Name="original_Product_Name" Type="String" />
-                <asp:Parameter Name="original_Product_Details" Type="String" />
-                <asp:Parameter Name="original_Product_Quantity" Type="Int32" />
-                <asp:Parameter Name="original_Product_Price" Type="Decimal" />
+                <asp:Parameter Name="ProductName" Type="String" />
+                <asp:Parameter Name="ProductDetails" Type="String" />
+                <asp:Parameter Name="ProductQuantity" Type="Int32" />
+                <asp:Parameter Name="ProductPrice" Type="Double" />
+                <asp:Parameter Name="original_ProductId" Type="Int32" />
+                <asp:Parameter Name="original_ProductName" Type="String" />
+                <asp:Parameter Name="original_ProductDetails" Type="String" />
+                <asp:Parameter Name="original_ProductQuantity" Type="Int32" />
+                <asp:Parameter Name="original_ProductPrice" Type="Double" />
             </UpdateParameters>
         </asp:SqlDataSource>
-
-        <asp:FormView ID="FormView1" runat="server" DataKeyNames="Product ID" DataSourceID="SqlDataSource1" DefaultMode="Insert">
+        <br />
+        &nbsp;<br />
+        <asp:FormView ID="FormView1" runat="server" DataKeyNames="ProductId" DataSourceID="SqlDataSource1" DefaultMode="Insert" BackColor="#FFFFCC" BorderStyle="Ridge" BorderWidth="1px" ForeColor="Black" HeaderText="Add Product">
             <EditItemTemplate>
-                Product Name:
-                <asp:TextBox ID="Product_NameTextBox" runat="server" Text='<%# Bind("[Product Name]") %>' />
+                ProductId:
+                <asp:Label ID="ProductIdLabel1" runat="server" Text='<%# Eval("ProductId") %>' />
                 <br />
-                Product ID:
-                <asp:Label ID="Product_IDLabel1" runat="server" Text='<%# Eval("[Product ID]") %>' />
+                ProductName:
+                <asp:TextBox ID="ProductNameTextBox" runat="server" Text='<%# Bind("ProductName") %>' />
                 <br />
-                Product Details:
-                <asp:TextBox ID="Product_DetailsTextBox" runat="server" Text='<%# Bind("[Product Details]") %>' />
+                ProductDetails:
+                <asp:TextBox ID="ProductDetailsTextBox" runat="server" Text='<%# Bind("ProductDetails") %>' />
                 <br />
-                Product Quantity:
-                <asp:TextBox ID="Product_QuantityTextBox" runat="server" Text='<%# Bind("[Product Quantity]") %>' />
+                ProductQuantity:
+                <asp:TextBox ID="ProductQuantityTextBox" runat="server" Text='<%# Bind("ProductQuantity") %>' />
                 <br />
-                Product Price:
-                <asp:TextBox ID="Product_PriceTextBox" runat="server" Text='<%# Bind("[Product Price]") %>' />
+                ProductPrice:
+                <asp:TextBox ID="ProductPriceTextBox" runat="server" Text='<%# Bind("ProductPrice") %>' />
                 <br />
                 <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" CommandName="Update" Text="Update" />
                 &nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
             </EditItemTemplate>
+            <HeaderStyle BackColor="#CC0000" ForeColor="White" />
             <InsertItemTemplate>
-                Product Name:
-                <asp:TextBox ID="Product_NameTextBox" runat="server" Text='<%# Bind("[Product Name]") %>' />
+                ProductId:
+                <asp:TextBox ID="ProductIdTextBox" runat="server" Text='<%# Bind("ProductId") %>' />
                 <br />
-                Product ID:
-                <asp:TextBox ID="Product_IDTextBox" runat="server" Text='<%# Bind("[Product ID]") %>' />
+                ProductName:
+                <asp:TextBox ID="ProductNameTextBox" runat="server" Text='<%# Bind("ProductName") %>' />
                 <br />
-                Product Details:
-                <asp:TextBox ID="Product_DetailsTextBox" runat="server" Text='<%# Bind("[Product Details]") %>' />
+                ProductDetails:
+                <asp:TextBox ID="ProductDetailsTextBox" runat="server" Text='<%# Bind("ProductDetails") %>' />
                 <br />
-                Product Quantity:
-                <asp:TextBox ID="Product_QuantityTextBox" runat="server" Text='<%# Bind("[Product Quantity]") %>' />
+                ProductQuantity:
+                <asp:TextBox ID="ProductQuantityTextBox" runat="server" Text='<%# Bind("ProductQuantity") %>' />
                 <br />
-                Product Price:
-                <asp:TextBox ID="Product_PriceTextBox" runat="server" Text='<%# Bind("[Product Price]") %>' />
+                ProductPrice:
+                <asp:TextBox ID="ProductPriceTextBox" runat="server" Text='<%# Bind("ProductPrice") %>' />
                 <br />
                 <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" />
                 &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
             </InsertItemTemplate>
             <ItemTemplate>
-                Product Name:
-                <asp:Label ID="Product_NameLabel" runat="server" Text='<%# Bind("[Product Name]") %>' />
+                ProductId:
+                <asp:Label ID="ProductIdLabel" runat="server" Text='<%# Eval("ProductId") %>' />
                 <br />
-                Product ID:
-                <asp:Label ID="Product_IDLabel" runat="server" Text='<%# Eval("[Product ID]") %>' />
+                ProductName:
+                <asp:Label ID="ProductNameLabel" runat="server" Text='<%# Bind("ProductName") %>' />
                 <br />
-                Product Details:
-                <asp:Label ID="Product_DetailsLabel" runat="server" Text='<%# Bind("[Product Details]") %>' />
+                ProductDetails:
+                <asp:Label ID="ProductDetailsLabel" runat="server" Text='<%# Bind("ProductDetails") %>' />
                 <br />
-                Product Quantity:
-                <asp:Label ID="Product_QuantityLabel" runat="server" Text='<%# Bind("[Product Quantity]") %>' />
+                ProductQuantity:
+                <asp:Label ID="ProductQuantityLabel" runat="server" Text='<%# Bind("ProductQuantity") %>' />
                 <br />
-                Product Price:
-                <asp:Label ID="Product_PriceLabel" runat="server" Text='<%# Bind("[Product Price]") %>' />
+                ProductPrice:
+                <asp:Label ID="ProductPriceLabel" runat="server" Text='<%# Bind("ProductPrice") %>' />
                 <br />
                 <asp:LinkButton ID="EditButton" runat="server" CausesValidation="False" CommandName="Edit" Text="Edit" />
                 &nbsp;<asp:LinkButton ID="DeleteButton" runat="server" CausesValidation="False" CommandName="Delete" Text="Delete" />
                 &nbsp;<asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="New" />
             </ItemTemplate>
         </asp:FormView>
-
+        <asp:Button ID="BtnLogout_Add" runat="server" Text="Logout" BorderWidth="1px" />
     </form>
-
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Footer" runat="server">
+     <p><a href="http://validator.w3.org/check?uri=referer">Validate HTML</a> |
+                <a href="http://jigsaw.w3.org/css-validator/check/referer">Validate CSS</a> |
+                <a href="Admin/">Admin</a>                &copy;Copyright 2018 by 1626501/J39718</p>
+</asp:Content>
+<asp:Content ID="Content6" ContentPlaceHolderID="GoogleMap" runat="server">
 </asp:Content>

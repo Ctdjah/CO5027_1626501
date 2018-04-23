@@ -4,23 +4,89 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Heading1" runat="server">
-    Products
+    Product Details
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Content" runat="server">
+    <form id="form5" runat="server">
+        <asp:FormView ID="FormView1" runat="server" DataKeyNames="ProductId" DataSourceID="SqlDataSource1">
+            <EditItemTemplate>
+                ProductId:
+                <asp:Label ID="ProductIdLabel1" runat="server" Text='<%# Eval("ProductId") %>' />
+                <br />
+                ProductName:
+                <asp:TextBox ID="ProductNameTextBox" runat="server" Text='<%# Bind("ProductName") %>' />
+                <br />
+                ProductDetails:
+                <asp:TextBox ID="ProductDetailsTextBox" runat="server" Text='<%# Bind("ProductDetails") %>' />
+                <br />
+                ProductQuantity:
+                <asp:TextBox ID="ProductQuantityTextBox" runat="server" Text='<%# Bind("ProductQuantity") %>' />
+                <br />
+                ProductPrice:
+                <asp:TextBox ID="ProductPriceTextBox" runat="server" Text='<%# Bind("ProductPrice") %>' />
+                <br />
+                <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" CommandName="Update" Text="Update" />
+                &nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
+            </EditItemTemplate>
+            <InsertItemTemplate>
+                ProductId:
+                <asp:TextBox ID="ProductIdTextBox" runat="server" Text='<%# Bind("ProductId") %>' />
+                <br />
+                ProductName:
+                <asp:TextBox ID="ProductNameTextBox" runat="server" Text='<%# Bind("ProductName") %>' />
+                <br />
+                ProductDetails:
+                <asp:TextBox ID="ProductDetailsTextBox" runat="server" Text='<%# Bind("ProductDetails") %>' />
+                <br />
+                ProductQuantity:
+                <asp:TextBox ID="ProductQuantityTextBox" runat="server" Text='<%# Bind("ProductQuantity") %>' />
+                <br />
+                ProductPrice:
+                <asp:TextBox ID="ProductPriceTextBox" runat="server" Text='<%# Bind("ProductPrice") %>' />
+                <br />
+                <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" />
+                &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
+            </InsertItemTemplate>
+            <ItemTemplate>
+                ProductId:
+                <asp:Label ID="ProductIdLabel" runat="server" Text='<%# Eval("ProductId") %>' />
+                <br />
+                ProductName:
+                <asp:Label ID="ProductNameLabel" runat="server" Text='<%# Bind("ProductName") %>' />
+                <br />
+                ProductDetails:
+                <asp:Label ID="ProductDetailsLabel" runat="server" Text='<%# Bind("ProductDetails") %>' />
+                <br />
+                ProductQuantity:
+                <asp:Label ID="ProductQuantityLabel" runat="server" Text='<%# Bind("ProductQuantity") %>' />
+                <br />
+                ProductPrice:
+                <asp:Label ID="ProductPriceLabel" runat="server" Text='<%# Bind("ProductPrice") %>' />
+                <br />
 
-    <br />
-    <table style="width:200px">
-        <tr>
-             <td><img alt="Image not found" src="image/productimg/Blue501Straight.jpg" width="300" /><p>Levi's Blue 501 Straight Jeans</p><p>Price:$100</p></td>
-             <td><img alt="Image not found" src="image/productimg/BlueWedgieStraight.jpg" width="300"/><p>Levi's Blue Wedgie Straight Jeans</p><p>Price:$160</p></td>
-             <td><img alt="Image not found" src="image/productimg/BlueWedgieIcon.jpg" width="300"/><p>Levi's Blue Wedgie Icon Jeans</p><p>Price:$100</p></td>
-        </tr>
-        <tr>    
-             <td><img alt="Image not found" src="image/productimg/BlackWedgieSkinny.jpg" width="300"/><p>Levi's Black Wedgie Skinny Jeans</p><p>Price:$100</p></td>
-             <td><img alt="Image not found" src="image/productimg/BlueAltered501Skinny.jpg" width="300"/><p>Levi's Blue Altered 501 Skinny Jeans</p><p>Price:$130</p></td>
+            </ItemTemplate>
+        </asp:FormView>
 
-        </tr>
-    </table>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:db_1626501_asg_co5027ConnectionString %>" SelectCommand="SELECT * FROM [tblProduct] WHERE ([ProductId] = @ProductId)">
+            <SelectParameters>
+                <asp:QueryStringParameter Name="ProductId" QueryStringField="Id" Type="Int32" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+
+        <asp:Label ID="Label1" runat="server" Text="Quantity"></asp:Label>
+        <asp:DropDownList ID="DDLQuantity" runat="server">       
+            <asp:ListItem Selected="True">1</asp:ListItem>
+            <asp:ListItem>2</asp:ListItem>
+            <asp:ListItem>3</asp:ListItem></asp:DropDownList>
+     
+        <br />
+        <asp:Button ID="BtnPurchase" runat="server" Text="Buy Now" OnClick="BtnPurchase_Click" />
+
+
+        </form>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Footer" runat="server">
+     <p><a href="http://validator.w3.org/check?uri=referer">Validate HTML</a> |
+                <a href="http://jigsaw.w3.org/css-validator/check/referer">Validate CSS</a> |
+                <a href="Admin/">Admin</a>                &copy;Copyright 2018 by 1626501/J39718</p>
 </asp:Content>

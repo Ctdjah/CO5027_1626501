@@ -11,7 +11,20 @@ namespace WebApplication1.admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            string productId = Request.QueryString["Id"];
+            string filename = productId + ".jpg";
 
+            CurrentImage.ImageUrl = "~/admin/imgproduct/" + filename;
+        }
+
+        protected void BtnUpload_Click(object sender, EventArgs e)
+        {
+            string productId = Request.QueryString["Id"];
+
+            string filename = productId + ".jpg";
+            string saveLocation = Server.MapPath("~/admin/imgproduct/" + filename);
+
+            imageFileUploadControl.SaveAs(saveLocation);
         }
     }
 }

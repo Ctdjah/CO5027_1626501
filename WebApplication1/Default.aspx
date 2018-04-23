@@ -8,6 +8,8 @@
     Welcome to Levi's Strauss & Co. Jeans
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Content" runat="server">
+
+    <form id="form4" runat="server">
     <br />
     <p>Levi's aunthentic and stylish jeans are one of the best sellers in this company.
         <br /> Here are our brand new high quality limited-edition jeans: </p>
@@ -28,7 +30,26 @@
         </tr>
     </table>
     
+    <asp:Repeater ID="ProductList" runat="server" DataSourceID="SqlDataSource1">
+
+    <HeaderTemplate><ul></HeaderTemplate>
+        <ItemTemplate>
+            <li>
+                <a href="<%#Eval("ProductId", "Product.aspx?Id={0}")%>">
+                    <%#Eval("ProductName")%>
+                </a>
+            </li>
+        </ItemTemplate>
+
+        <FooterTemplate></ul></FooterTemplate>
+
+    </asp:Repeater>
+
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:db_1626501_asg_co5027ConnectionString %>" SelectCommand="SELECT * FROM [tblProduct]"></asp:SqlDataSource>
+        </form>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Footer" runat="server">
-      <p>&copy;Copyright 2018 by Siti Khadijah Binti Haji Anuar</p>
+       <p><a href="http://validator.w3.org/check?uri=referer">Validate HTML</a> |
+                <a href="http://jigsaw.w3.org/css-validator/check/referer">Validate CSS</a> |
+                <a href="Admin/">Admin</a>                &copy;Copyright 2018 by 1626501/J39718</p>
 </asp:Content>
