@@ -13,5 +13,10 @@ namespace WebApplication1.admin
         {
 
         }
+
+        protected void Btnbackedit_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Add.aspx");
+        }
     }
 }

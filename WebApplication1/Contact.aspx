@@ -8,7 +8,7 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Content" runat="server">
         <form id="form1" runat="server">
-        <p>Please fill and write your message on the given text box below. </p>
+        <p>Please fill and write your message on the given text box below </p>
 <p>&nbsp;</p>
     <asp:Label ID="Label1" runat="server" Text="Email "></asp:Label>
             <asp:TextBox ID="txtEmail" runat="server" BorderWidth="1px" OnTextChanged="txtEmail_TextChanged"></asp:TextBox>
@@ -45,5 +45,45 @@
 <asp:Content ID="Content5" ContentPlaceHolderID="Footer" runat="server">
       <p><a href="http://validator.w3.org/check?uri=referer">Validate HTML</a> |
                 <a href="http://jigsaw.w3.org/css-validator/check/referer">Validate CSS</a> |
-                <a href="Admin/">Admin</a>                &copy;Copyright 2018 by 1626501/J39718</p>
+                <a href="admin/">Admin</a>                &copy;Copyright 2018 by 1626501/J39718</p>
+</asp:Content>
+
+<asp:Content ID="Content6" ContentPlaceHolderID="GoogleMap" runat="server">
+      <div id="map"></div>
+    <script>
+        var map;
+        function initMap() {
+
+
+            var collegeLatLng = { lat: 4.885731, lng: 114.931669 };
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 19,
+                center: collegeLatLng
+            });
+
+            var contentString1 = '<div id="content">' +
+                '<div id="siteNotice">' +
+                '</div>' +
+                '<h1 id="firstHeading" class="firstHeading">Laksamana College of Business</h1>' +
+                '<div id="bodyContent">' +
+                '<p><b>College located here!</b></p>' +
+                '</div>' +
+                '</div>';
+
+            var infowindow1 = new google.maps.InfoWindow({
+                content: contentString1
+            });
+
+
+            var marker1 = new google.maps.Marker({
+                position: collegeLatLng,
+                map: map,
+                title: 'Laksamana College of Business'
+            });
+            marker1.addListener('click', function () {
+                infowindow1.open(map, marker1);
+            });
+        }
+    </script>
+    <script async="async" defer="defer" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCytZqImr1VRb7dNeEvn4i1enPiTlLM6Yc&callback=initMap"></script>
 </asp:Content>

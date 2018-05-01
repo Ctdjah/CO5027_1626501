@@ -26,5 +26,10 @@ namespace WebApplication1.admin
 
             imageFileUploadControl.SaveAs(saveLocation);
         }
+
+        protected void Btnbackuploadimg_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Add.aspx");
+        }
     }
 }

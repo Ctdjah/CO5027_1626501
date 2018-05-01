@@ -17,8 +17,13 @@ namespace WebApplication1.admin
 
         protected void BtnLogout_Add_Click(object sender, EventArgs e)
         {
-            HttpContext.Current.GetOwinContext().Authentication.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            Response.Redirect("~/Login.aspx");
+            
+            Response.Redirect("index.aspx");
+        }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

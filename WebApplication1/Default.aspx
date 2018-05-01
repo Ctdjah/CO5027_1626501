@@ -17,28 +17,32 @@
     <p></p>
     <br />
     <br />
-    <table style="width:200px">
-        <tr>
-             <td><img alt="Image not found" src="image/productimg/Blue501Straight.jpg" width="300" /><p>Levi's Blue 501 Straight Jeans</p><p>Price:$100</p></td>
-             <td><img alt="Image not found" src="image/productimg/BlueWedgieStraight.jpg" width="300"/><p>Levi's Blue Wedgie Straight Jeans</p><p>Price:$160</p></td>
-             <td><img alt="Image not found" src="image/productimg/BlueWedgieIcon.jpg" width="300"/><p>Levi's Blue Wedgie Icon Jeans</p><p>Price:$100</p></td>
-        </tr>
-        <tr>    
-             <td><img alt="Image not found" src="image/productimg/BlackWedgieSkinny.jpg" width="300"/><p>Levi's Black Wedgie Skinny Jeans</p><p>Price:$100</p></td>
-             <td><img alt="Image not found" src="image/productimg/BlueAltered501Skinny.jpg" width="300"/><p>Levi's Blue Altered 501 Skinny Jeans</p><p>Price:$130</p></td>
-
-        </tr>
-    </table>
+        
+   
     
     <asp:Repeater ID="ProductList" runat="server" DataSourceID="SqlDataSource1">
 
     <HeaderTemplate><ul></HeaderTemplate>
         <ItemTemplate>
-            <li>
-                <a href="<%#Eval("ProductId", "Product.aspx?Id={0}")%>">
-                    <%#Eval("ProductName")%>
-                </a>
-            </li>
+            
+    <table id="tableProcss" style="margin:0 auto">        
+                    <tr>
+                        <td>
+                            
+                            <a href="<%#Eval("ProductId", "Product.aspx?Id={0}")%>">
+                                <asp:Image ID="imgOfProduct" runat="server" ImageUrl='<%#Eval ("ProductLinkImage") %>' ImageAlign="Middle" Height="400" /><p></p>                                                                        
+                                <%#Eval("ProductName") %><p>Price:$<%#Eval("ProductPrice") %></p>
+                                
+                           
+                        
+                                </a>
+                            
+                        </td>
+                    </tr>
+            
+                </table>
+
+        
         </ItemTemplate>
 
         <FooterTemplate></ul></FooterTemplate>
@@ -51,5 +55,7 @@
 <asp:Content ID="Content5" ContentPlaceHolderID="Footer" runat="server">
        <p><a href="http://validator.w3.org/check?uri=referer">Validate HTML</a> |
                 <a href="http://jigsaw.w3.org/css-validator/check/referer">Validate CSS</a> |
-                <a href="Admin/">Admin</a>                &copy;Copyright 2018 by 1626501/J39718</p>
+                <a href="admin/">Admin</a>                &copy;Copyright 2018 by 1626501/J39718</p>
+</asp:Content>
+<asp:Content ID="Content6" ContentPlaceHolderID="GoogleMap" runat="server">
 </asp:Content>
