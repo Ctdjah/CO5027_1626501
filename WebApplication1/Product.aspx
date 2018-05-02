@@ -8,8 +8,8 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Content" runat="server">
     <form id="form5" runat="server">
-        <asp:Image ID="CurrentImage" runat="server" Height="200px" />
-        <asp:FormView ID="FormView1" runat="server" DataKeyNames="ProductId" DataSourceID="SqlDataSource1">
+        <asp:Image ID="CurrentImage" runat="server" Height="200px" AlternateText="Image is not visible (Please Upload your Image)" />
+        <asp:FormView ID="FormView1" runat="server" DataKeyNames="ProductId" DataSourceID="SqlDataSource1" HorizontalAlign="Center">
             <EditItemTemplate>
                 ProductId:
                 <asp:Label ID="ProductIdLabel1" runat="server" Text='<%# Eval("ProductId") %>' />
@@ -70,7 +70,12 @@
                 ProductPrice:
                 <asp:Label ID="ProductPriceLabel" runat="server" Text='<%# Bind("ProductPrice") %>' />
                 <br />
-
+                <br />
+                <asp:Label ID="LabelQuantity" runat="server" Text="Quantity"></asp:Label>
+        <asp:DropDownList ID="DDLQuantity" runat="server">       
+            <asp:ListItem Selected="True">1</asp:ListItem>
+            <asp:ListItem>2</asp:ListItem>
+            <asp:ListItem>3</asp:ListItem></asp:DropDownList>
                 
                 
             </ItemTemplate>
@@ -111,11 +116,7 @@
             </UpdateParameters>
         </asp:SqlDataSource>
 
-        <asp:Label ID="Label1" runat="server" Text="Quantity"></asp:Label>
-        <asp:DropDownList ID="DDLQuantity" runat="server">       
-            <asp:ListItem Selected="True">1</asp:ListItem>
-            <asp:ListItem>2</asp:ListItem>
-            <asp:ListItem>3</asp:ListItem></asp:DropDownList>
+        
      
         <br />
         <asp:Button ID="BtnPurchase" runat="server" Text="Buy Now" OnClick="BtnPurchase_Click" />

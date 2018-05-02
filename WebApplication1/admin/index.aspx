@@ -11,7 +11,7 @@
     <br />
     <br />
     
-    Type in the address box "/add.aspx" to view list of products
+    You are now an Admin.
     <br />
     <br />
     <form id="form2" runat="server">

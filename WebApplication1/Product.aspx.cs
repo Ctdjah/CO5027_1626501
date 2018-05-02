@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using PayPal;
 using PayPal.Api;
 
 namespace WebApplication1
@@ -20,59 +21,66 @@ namespace WebApplication1
 
         protected void BtnPurchase_Click(object sender, EventArgs e)
         {
-            decimal postagePackagingCost = 3.95m;
-            decimal ProductPrice = 10.00m;
-            int quantityOfProduct = int.Parse(DDLQuantity.SelectedValue);
-            decimal subTotal = (quantityOfProduct * ProductPrice);
-            decimal total = subTotal + postagePackagingCost;
+            DropDownList DDLQuantity = (DropDownList)FormView1.FindControl("ddlQuantity");
+            Label productPrice = (Label)FormView1.FindControl("ProductPriceLabel");
+            decimal shippingPackagingCost = 5.00m;
+            int productPrice1;
+            int.TryParse((string)productPrice.Text, out productPrice1);
+            int quantityOfProducts = int.Parse(DDLQuantity.SelectedValue);
+            decimal subTotal = (quantityOfProducts * productPrice1);
+            decimal totalAmount = subTotal + shippingPackagingCost;
 
+            
             var config = ConfigManager.Instance.GetProperties();
             var accessToken = new OAuthTokenCredential(config).GetAccessToken();
+            
             var apiContext = new APIContext(accessToken);
 
-            var productItem = new Item();
-            productItem.name = "Product 1";
-            productItem.currency = "BND";
-            productItem.price = ProductPrice.ToString();
-            productItem.sku = "PRO1";
-            productItem.quantity = quantityOfProduct.ToString();
+            var productStock = new Item();
+            productStock.name = "Products";
+            productStock.currency = "SGD";
+            productStock.price = productPrice1.ToString();
+            productStock.sku = "Levi's Jeans"; 
+            productStock.quantity = quantityOfProducts.ToString();
+
+
 
             var transactionDetails = new Details();
             transactionDetails.tax = "0";
-            transactionDetails.shipping = postagePackagingCost.ToString();
+            transactionDetails.shipping = shippingPackagingCost.ToString();
             transactionDetails.subtotal = subTotal.ToString("0.00");
 
             var transactionAmount = new Amount();
-            transactionAmount.currency = "GBP";
-            transactionAmount.total = total.ToString("0.00");
+            transactionAmount.currency = "SGD";
+            transactionAmount.total = totalAmount.ToString("0.00");
             transactionAmount.details = transactionDetails;
 
             var transaction = new Transaction();
-            transaction.description = "Your order";
-            transaction.invoice_number = Guid.NewGuid().ToString();
+            transaction.description = "This is your order";
+            transaction.invoice_number = Guid.NewGuid().ToString(); // this should ideally be the id of a record storing the order
             transaction.amount = transactionAmount;
             transaction.item_list = new ItemList
             {
-                items = new List<Item> { productItem }
-
+                items = new List<Item> { productStock }
             };
+
             var payer = new Payer();
             payer.payment_method = "paypal";
 
             var redirectUrls = new RedirectUrls();
-            redirectUrls.cancel_url = "http://" + HttpContext.Current.Request.Url.Authority + "/Default.aspx";
-            redirectUrls.return_url = "http://" + HttpContext.Current.Request.Url.Authority + "/CompletePurchase.aspx";
+            string strPathAndQuery = HttpContext.Current.Request.Url.PathAndQuery;
+            string strUrl = HttpContext.Current.Request.Url.AbsoluteUri.Replace(strPathAndQuery, "/");
+
+            redirectUrls.cancel_url = strUrl + "cancel.aspx";
+            redirectUrls.return_url = strUrl + "completePurchase.aspx";
 
             var payment = Payment.Create(apiContext, new Payment
             {
-                intent = "Sale",
+                intent = "sale",
                 payer = payer,
                 transactions = new List<Transaction> { transaction },
                 redirect_urls = redirectUrls
-
-
             });
-
 
             Session["paymentId"] = payment.id;
 
@@ -80,6 +88,7 @@ namespace WebApplication1
             {
                 if (link.rel.ToLower().Trim().Equals("approval_url"))
                 {
+                    
                     Response.Redirect(link.href);
                 }
             }
