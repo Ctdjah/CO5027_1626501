@@ -22,7 +22,7 @@
     
     <asp:Repeater ID="ProductList" runat="server" DataSourceID="SqlDataSource1">
 
-    <HeaderTemplate><ul></HeaderTemplate>
+    <HeaderTemplate></HeaderTemplate>
         <ItemTemplate>
             
     <table id="tableProcss" style="margin:0 auto">        
@@ -30,7 +30,7 @@
                         <td>
                             
                             <a href="<%#Eval("ProductId", "Product.aspx?Id={0}")%>">
-                                <asp:Image ID="imgOfProduct" runat="server" ImageUrl='<%#Eval ("ProductLinkImage") %>' ImageAlign="Middle" Height="400" /><p></p>                                                                        
+                                <asp:Image ID="imgOfProduct" runat="server" ImageUrl='<%#Eval ("ProductLinkImage") %>' ImageAlign="Middle" Height="400" AlternateText="Image Not Visible" /><p></p>                                                                        
                                 <%#Eval("ProductName") %><p>Price:$<%#Eval("ProductPrice") %></p>
                                 
                            
@@ -45,11 +45,15 @@
         
         </ItemTemplate>
 
-        <FooterTemplate></ul></FooterTemplate>
+        <FooterTemplate></FooterTemplate>
 
     </asp:Repeater>
 
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:db_1626501_asg_co5027ConnectionString %>" SelectCommand="SELECT * FROM [tblProduct]"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:db_1626501_asg_co5027ConnectionString %>" SelectCommand="SELECT * FROM [tblProduct] WHERE ([ProductQuantity] &gt; @ProductQuantity)">
+        <SelectParameters>
+            <asp:Parameter DefaultValue="0" Name="ProductQuantity" Type="Int32" />
+        </SelectParameters>
+        </asp:SqlDataSource>
         </form>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Footer" runat="server">

@@ -8,7 +8,7 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Content" runat="server">
     <form id="form5" runat="server">
-        <asp:Image ID="CurrentImage" runat="server" Height="200px" AlternateText="Image is not visible (Please Upload your Image)" />
+        <asp:Image ID="CurrentImage" runat="server" Height="200px" AlternateText="Image is not visible" />
         <asp:FormView ID="FormView1" runat="server" DataKeyNames="ProductId" DataSourceID="SqlDataSource1" HorizontalAlign="Center">
             <EditItemTemplate>
                 ProductId:
