@@ -57,6 +57,8 @@ namespace WebApplication1
                 {
                     Response.Redirect("~/admin/index.aspx");
                 }
+                else
+                    Response.Redirect("Default.aspx");
             }
 
 
